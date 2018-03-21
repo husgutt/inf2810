@@ -1,0 +1,29 @@
+;; Gruppe
+;; Brukernavn; toresvea, borisnj
+;; Navn: Tore Sveaass, Henrik Johnsen
+;; Oppgave 1
+;;
+;;
+(define (p-cons x y)
+  (lambda (proc) (proc x y)))
+
+(define (p-car proc)
+  (proc (lambda (x y) x)))
+
+(define (p-cdr proc)
+  (proc (lambda (x y) y)))
+
+"Utskrift Oppgave 1 a"
+(p-cons "foo" "bar")
+(p-car (p-cons "foo" "bar"))
+(p-cdr (p-cons "foo" "bar"))
+(p-car (p-cdr (p-cons "zoo" (p-cons "foo" "bar"))))
+
+;; Oppgave 1 b
+(define foo 42)
+
+(let ((foo 5)
+      (x foo))
+  (if (= x foo)
+      'same
+      'different))

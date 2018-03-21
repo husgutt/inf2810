@@ -1,0 +1,20 @@
+(define (filter pred items)
+  (cond ((null? items) '())
+        ((pred (car items))
+         (cons (car items)
+               (filter pred (cdr items))))
+        (else (filter pred (cdr items)))))
+
+(define (quicksort lst)
+  (if (null? lst)
+      lst
+      (append
+       (quicksort (filter (lambda (x) (<= x (car lst))) (cdr lst)))
+       (list (car lst))
+       (quicksort (filter (lambda (x) (> x (car lst))) (cdr lst))))))
+
+(define (last-pair lst)
+ (if (null? (cdr lst))
+     lst
+     (last-pair (cdr lst))))
+
