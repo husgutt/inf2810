@@ -39,5 +39,10 @@
       (begin
         (proc (car lst))
         (for-each2 proc (cdr lst)))))
-      
-  
+
+(define (equal2? a b)
+  (or (eq? a b)
+      (and (pair? a) (pair? b)
+           (equal2? (car a) (car b))
+           (equal2? (cdr a) (cdr b)))))
+          
